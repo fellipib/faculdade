@@ -1,0 +1,22 @@
+CREATE TABLE TB_FACULDADE (
+  id      INTEGER AUTO_INCREMENT PRIMARY KEY,
+  name    VARCHAR(50) NOT NULL,
+  foundationDate DATE
+);
+CREATE TABLE TB_ALUNO (
+  id           INTEGER AUTO_INCREMENT PRIMARY KEY,
+  name         VARCHAR(50) NOT NULL,
+  dt_birthday DATE,
+  faculdade_id INTEGER,
+  curso_id      INTEGER,
+  FOREIGN KEY (faculdade_id) REFERENCES TB_FACULDADE (id)
+);
+
+CREATE TABLE TB_CURSO (
+  id      INTEGER AUTO_INCREMENT PRIMARY KEY,
+  name    VARCHAR(50) NOT NULL,
+  faculdade_id INTEGER,
+  aluno_id INTEGER,
+  FOREIGN KEY (faculdade_id) REFERENCES TB_FACULDADE (id),
+  FOREIGN KEY (aluno_id) REFERENCES TB_ALUNO (id)
+);
